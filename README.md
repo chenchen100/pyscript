@@ -53,4 +53,4 @@ Check out the [developing process](https://docs.pyscript.net/latest/development/
 
 ## Governance
 
-The [PyScript organization governance](https://github.com/pyscript/governance) is documented in a separate repository.
+The [PyScript organization governance](https://github.com/pyscript/governance) is documented in a separate repository..
