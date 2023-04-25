@@ -10,7 +10,11 @@ CONDA_EXE := conda
 CONDA_ENV ?= $(base_dir)/pyscriptjs/env
 env := $(CONDA_ENV)
 conda_run := $(CONDA_EXE) run -p $(env)
-PYTEST_EXE := $(CONDA_ENV)/bin/pytest
+ifeq ($(OS),Windows_NT)
+    PYTEST_EXE = $(CONDA_ENV)/Scripts/pytest
+else
+    PYTEST_EXE = $(CONDA_ENV)/bin/pytest
+endif
 GOOD_NODE_VER := 14
 GOOD_NPM_VER := 6
 NODE_VER    := $(shell node -v | cut -d. -f1 | sed 's/^v\(.*\)/\1/')

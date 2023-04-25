@@ -20,7 +20,7 @@ on:
 
 jobs:
     BuildAndTest:
-        runs-on: ubuntu-latest
+        runs-on: windows-latest
         defaults:
             run:
                 working-directory: pyscriptjs
@@ -82,7 +82,7 @@ jobs:
                   path: pyscriptjs/test_results
                   if-no-files-found: error
     eslint:
-        runs-on: ubuntu-latest
+        runs-on: windows-latest
         defaults:
             run:
                 working-directory: pyscriptjs
@@ -115,7 +115,7 @@ jobs:
               run: npx eslint src -c .eslintrc.js
 
     Deploy:
-        runs-on: ubuntu-latest
+        runs-on: windows-latest
         needs: BuildAndTest
         if: github.ref == 'refs/heads/main' # Only deploy on merge into main
         permissions:

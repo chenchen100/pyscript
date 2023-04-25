@@ -151,10 +151,18 @@ class PyScriptTest:
         initialization. The end result is that the requested fixtures are
         automatically made available as self.xxx in all methods.
         """
+#         self.testname = request.function.__name__.replace("test_", "")
+#         self.tmpdir = tmpdir
+#         # create a symlink to BUILD inside tmpdir
+#         tmpdir.join("build").mksymlinkto(BUILD)
+        # +++
         self.testname = request.function.__name__.replace("test_", "")
         self.tmpdir = tmpdir
+        build_path = os.path.abspath(BUILD)
         # create a symlink to BUILD inside tmpdir
-        tmpdir.join("build").mksymlinkto(BUILD)
+        symlink_path = tmpdir.join("build")
+        os.symlink(build_path, str(symlink_path), target_is_directory=True)
+        # +++
         self.tmpdir.chdir()
         self.logger = logger
         self.execution_thread = execution_thread
